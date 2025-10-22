@@ -1,0 +1,97 @@
+export const DESTINATIONS = [
+  {
+    id: "bali",
+    name: "Bali, Indonesia",
+    description: "Tropical paradise with stunning beaches and ancient temples",
+    image: "/bali-beach-tropical-paradise.jpg",
+    rating: 4.8,
+    reviews: 2543,
+    price: "$1,299",
+  },
+  {
+    id: "paris",
+    name: "Paris, France",
+    description: "The City of Light - romance, art, and world-class cuisine",
+    image: "/paris-eiffel-tower-romantic.jpg",
+    rating: 4.9,
+    reviews: 3821,
+    price: "$1,599",
+  },
+  {
+    id: "tokyo",
+    name: "Tokyo, Japan",
+    description: "Modern metropolis blending tradition with cutting-edge technology",
+    image: "/tokyo-neon-lights-cityscape.jpg",
+    rating: 4.7,
+    reviews: 2156,
+    price: "$1,449",
+  },
+  {
+    id: "new-york",
+    name: "New York, USA",
+    description: "The city that never sleeps - iconic landmarks and endless energy",
+    image: "/nyc-skyline-twilight.png",
+    rating: 4.6,
+    reviews: 4102,
+    price: "$899",
+  },
+  {
+    id: "dubai",
+    name: "Dubai, UAE",
+    description: "Luxury desert oasis with world-class shopping and architecture",
+    image: "/dubai-desert-luxury.jpg",
+    rating: 4.5,
+    reviews: 1987,
+    price: "$1,199",
+  },
+  {
+    id: "sydney",
+    name: "Sydney, Australia",
+    description: "Iconic harbor city with stunning beaches and vibrant culture",
+    image: "/sydney-opera-house-harbor.jpg",
+    rating: 4.8,
+    reviews: 2734,
+    price: "$1,349",
+  },
+]
+
+export const NAVIGATION_ITEMS = [
+  { label: "Home", href: "/" },
+  { label: "Flight", href: "/flights", hasSubmenu: true },
+  { label: "Hotel", href: "/hotels" },
+  { label: "Cruise", href: "/cruises" },
+  { label: "Packages", href: "/packages" },
+  { label: "Blog", href: "/blog" },
+  { label: "About Us", href: "/about" },
+]
+
+export const FLIGHT_CLASSES = [
+  {
+    id: "first-class",
+    name: "First Class Flights",
+    icon: "✈️",
+    description: "Premium luxury flying experience",
+    href: "/flights/first-class",
+  },
+  {
+    id: "business-class",
+    name: "Business Class Flights",
+    icon: "💼",
+    description: "Professional comfort and convenience",
+    href: "/flights/business-class",
+  },
+  {
+    id: "intl-from-us",
+    name: "International Flights from US",
+    icon: "🌍",
+    description: "Explore the world from America",
+    href: "/flights/international-from-us",
+  },
+  {
+    id: "intl-to-us",
+    name: "International Flights to US",
+    icon: "🛬",
+    description: "Travel to the United States",
+    href: "/flights/international-to-us",
+  },
+]

@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Primary Brand Colors - Dark Navy Blue */
+  --primary: #010837;
+  --primary-foreground: #ffffff;
+  --black: #000000;
+   --sky-blue: #F8F8F8;
+   --gray:#6e6e6e;
+  /* Secondary - Bright Orange */
+  --secondary: #ff6b35;
+  --secondary-foreground: #ffffff;
+
+  /* Neutrals */
+  --background: #ffffff;
+  --foreground: #001f3f;
+  --card: #f8f9fa;
+  --card-foreground: #001f3f;
+
+  /* Accents */
+  --accent: #ff6b35;
+  --accent-foreground: #ffffff;
+  --muted: #e8eaed;
+  --muted-foreground: #5a6c7d;
+
+  /* UI Elements */
+  --border: #e0e3e8;
+  --input: #f5f7fa;
+  --ring: #ff6b35;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Popover & Sidebar */
+  --popover: #ffffff;
+  --popover-foreground: #001f3f;
+  --sidebar: #f8f9fa;
+  --sidebar-foreground: #001f3f;
+  --sidebar-primary: #001f3f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ff6b35;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e0e3e8;
+  --sidebar-ring: #ff6b35;
+
+  /* Charts */
+  --chart-1: #001f3f;
+  --chart-2: #ff6b35;
+  --chart-3: #0066cc;
+  --chart-4: #00b4d8;
+  --chart-5: #ffb703;
+
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark Mode - Primary Brand Colors */
+  --primary: #0a3a5c;
+  --primary-foreground: #ffffff;
+
+  /* Dark Mode - Secondary */
+  --secondary: #ff8c42;
+  --secondary-foreground: #001f3f;
+
+  /* Dark Mode - Neutrals */
+  --background: #0f1419;
+  --foreground: #ffffff;
+  --card: #1a1f26;
+  --card-foreground: #ffffff;
+
+  /* Dark Mode - Accents */
+  --accent: #ff8c42;
+  --accent-foreground: #001f3f;
+  --muted: #2d3139;
+  --muted-foreground: #a0a8b0;
+
+  /* Dark Mode - UI Elements */
+  --border: #2d3139;
+  --input: #1a1f26;
+  --ring: #ff8c42;
+  --destructive: #ef4444;
+  --destructive-foreground: #001f3f;
+
+  /* Dark Mode - Popover & Sidebar */
+  --popover: #1a1f26;
+  --popover-foreground: #ffffff;
+  --sidebar: #0f1419;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #0a3a5c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ff8c42;
+  --sidebar-accent-foreground: #001f3f;
+  --sidebar-border: #2d3139;
+  --sidebar-ring: #ff8c42;
+
+  /* Dark Mode - Charts */
+  --chart-1: #0a3a5c;
+  --chart-2: #ff8c42;
+  --chart-3: #0099ff;
+  --chart-4: #00d4ff;
+  --chart-5: #ffd60a;
+}
+
+@theme inline {
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sky-blue: var(--sky-blue);
+  --black: var(--black);
+  --color-card: var(--card);
+  --gray: var(--gray);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .transition-theme {
+    @apply transition-colors duration-300;
+  }
+}
