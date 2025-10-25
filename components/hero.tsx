@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import TravelTabs from "./TravelTabs";
 export function Hero() {
-    return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-sky-blue">
+    return <section className="relative min-h-screen flex items-center justify-center  bg-sky-blue">
         <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 left-10 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-2xl animate-pulse" />
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-2xl animate-pulse" />

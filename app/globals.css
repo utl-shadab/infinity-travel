@@ -162,3 +162,8 @@
     @apply transition-colors duration-300;
   }
 }
+.zi{
+  z-index: 99999;
+}
+.react-datepicker-wrapper {
+    width: -webkit-fill-available !important;}

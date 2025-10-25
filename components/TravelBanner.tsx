@@ -28,7 +28,7 @@ export default function TravelBanner() {
 
         <div>
           <button
-            className="bg-secondary text-white text-sm sm:text-base font-medium px-5 py-2 rounded-md hover:bg-orange-600 active:scale-95 transition-all"
+            className="bg-secondary text-white text-sm sm:text-base font-medium px-5 py-2 rounded-md hover:bg-secondary active:scale-95 transition-all"
           >
             Book Now
           </button>
