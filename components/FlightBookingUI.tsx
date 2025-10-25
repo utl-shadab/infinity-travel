@@ -10,6 +10,7 @@ import FareOptionsBar from "./FareOptionsBar";
 import FlightCard from "./FlightCard";
 
 export default function FlightBookingUI() {
+
   const sampleFlight = {
     ticketsLeft: 5,
     departure: {
@@ -63,7 +64,7 @@ export default function FlightBookingUI() {
             aircraft: 'Aircraft 77W',
             operatedBy: 'Operated by All Nippon Airways',
             travelTime: '6h 45m',
-           airlineLogo: '/airlogo.png',
+            airlineLogo: '/airlogo.png',
             layover: '1h 50m'
           },
           {
@@ -79,7 +80,7 @@ export default function FlightBookingUI() {
             aircraft: 'Aircraft 79C',
             operatedBy: 'Operated by All Nippon Airways',
             travelTime: '6h 45m',
-           airlineLogo: '/airlogo.png'
+            airlineLogo: '/airlogo.png'
           }
         ]
       },
@@ -151,7 +152,7 @@ export default function FlightBookingUI() {
           name: 'Spirit Airlines',
           route: 'HND to JFK',
           class: 'Economy',
-         logo: '/airlogo.png',
+          logo: '/airlogo.png',
           carryOn: {
             description: 'Up to 7 Kgs small bag or bag pack',
             status: 'Included'
@@ -179,10 +180,10 @@ export default function FlightBookingUI() {
 
       {/* Main Section */}
       <main className="space-y-6">
-       <AirlinePriceSlide/>
-       <FareOptionsBar/>
-       <FlightCard flight={sampleFlight} />
-       <FlightCard flight={sampleFlight} />
+        <AirlinePriceSlide />
+        <FareOptionsBar />
+        <FlightCard flight={sampleFlight} />
+        <FlightCard flight={sampleFlight} />
       </main>
     </div>
   );

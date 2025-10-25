@@ -65,6 +65,7 @@ export function AirportSelect({ label, icon: Icon, value, onChange, placeholder 
     const [activeIndex, setActiveIndex] = useState(0);
     const [isTouched, setIsTouched] = useState(false);
     const isInvalid = isTouched && !open && !value;
+
     useEffect(() => {
         if (!open && value) setInput(`${value.city} (${value.iata})`);
         if (!open && !value) setInput("");
@@ -212,7 +213,7 @@ export default function TravelTabs() {
     const [activeTab, setActiveTab] = useState("Flights");
     const [departureDate, setDepartureDate] = useState<Date | null>(null);
     const [returnDate, setReturnDate] = useState<Date | null>(null);
-   
+
 
     const tabs = [
         { icon: Plane, label: "Flights" },

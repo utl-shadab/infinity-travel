@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Calendar, PlaneTakeoff, PlaneLanding, Search, ArrowLeftRight, X, Plane } from "lucide-react";
 import DatePicker from "react-datepicker";
@@ -9,6 +9,9 @@ import type { FlightSearch } from "@/lib/flightSearchSchema";
 import { AirportSelect } from "@/components/TravelTabs";
 import { TravelerCabinSelect, TravelerState, defaultTravelerState } from "@/components/Traveler-dropdown";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSearchStore } from "@/app/store/searchStore";
+import { AIRPORTS } from "@/data/airport";
+
 
 type Mode = "search" | "modify";
 
@@ -23,8 +26,12 @@ export default function FlightSearchForm({ mode }: { mode: Mode }) {
     const [cabin, setCabin] = useState<FlightSearch["cabin"]>("economy");
 
     const [showMobilePopup, setShowMobilePopup] = useState(false);
+    const { setSearch } = useSearchStore.getState();
+
+    const { tripTypeVal, fromval, toVal, departureDateVal, returnDateVal, adultsVal, childrenVal, infantsSeatVal, infantsLapVal, cabinClassVal } = useSearchStore();
 
     const canSubmit = origin && destination && departureDate && (tripType === "one-way" || returnDate);
+
     const handleSwap = () => {
         setOrigin(destination);
         setDestination(origin);
@@ -35,20 +42,61 @@ export default function FlightSearchForm({ mode }: { mode: Mode }) {
         return nd.toISOString();
     };
 
+    useEffect(() => {
+        if (mode === "modify") {
+            const airport = AIRPORTS.find(a => a.iata === fromval);
+            if (airport) {
+                setOrigin(airport);
+            }
+            const dest = AIRPORTS.find(a => a.iata === toVal);
+            if (dest) {
+                setDestination(dest);
+            }
+            if (departureDateVal) setDepartureDate(new Date(departureDateVal));
+            if (returnDateVal) setReturnDate(new Date(returnDateVal));
+            setTravelerState({
+                adults: adultsVal ?? 1,
+                children: childrenVal ?? 0,
+                infantsSeat: infantsSeatVal ?? 0,
+                infantsLap: infantsLapVal ?? 0,
+                infants: (infantsSeatVal ?? 0) + (infantsLapVal ?? 0),
+                cabinClass: cabinClassVal ?? "Economy",
+            });
+        }
+    }, [mode, fromval, toVal, departureDateVal, returnDateVal]);
+
     const handleSearch = () => {
         if (!canSubmit) return;
-        const params = toQuery({
-            tt: tripType,
-            from: origin.iata,
-            to: destination.iata,
-            dep: toISO(departureDate!),
-            ret: tripType === "round-trip" ? toISO(returnDate!) : undefined,
-            adt: travelerState.adults,
-            chd: travelerState.children,
-            inf: travelerState.infants,
-            cabin
+
+        // const params = toQuery({
+        //     tt: tripType,
+        //     from: origin.iata,
+        //     to: destination.iata,
+        //     dep: toISO(departureDate!),
+        //     ret: tripType === "round-trip" ? toISO(returnDate!) : undefined,
+        //     adt: travelerState.adults,
+        //     chd: travelerState.children,
+        //     inf: travelerState.infants,
+        //     cabin
+        // });
+
+        // router.push(`/flight-listing?${params}`);
+
+        setSearch({
+            tripTypeVal: tripType,
+            fromval: origin.iata,
+            toVal: destination.iata,
+            departureDateVal: departureDate?.toISOString(),
+            returnDateVal: returnDate?.toISOString(),
+            adultsVal: travelerState.adults,
+            childrenVal: travelerState.children,
+            infantsSeatVal: travelerState.infantsSeat,
+            infantsLapVal: travelerState.infantsLap,
+            cabinClassVal: travelerState.cabinClass,
         });
-        router.push(`/flight-listing?${params}`);
+
+        router.push(`/flight-listing`);
+
         setShowMobilePopup(false);
     };
 
@@ -91,50 +139,50 @@ export default function FlightSearchForm({ mode }: { mode: Mode }) {
                     otherValue={origin}
                     placeholder="City, airport or IATA"
                 />
-              
+
 
                 {/*  Desktop Layout */}
-                
+
+                <div className="w-full">
+                    <label className="block text-[10px] sm:text-xs font-medium text-foreground/70 mb-2 uppercase tracking-wide">
+                        Departure Date
+                    </label>
+                    <div className="relative">
+                        <Calendar className="absolute left-3 top-3.5 text-foreground/40" size={18} />
+                        <DatePicker
+                            selected={departureDate}
+                            onChange={(date) => setDepartureDate(date)}
+                            placeholderText="Select"
+                            className="w-full pl-10 pr-9 py-2.5 sm:py-3 border border-gray-400 rounded-md font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-xs sm:text-sm"
+                        />
+                    </div>
+                </div>
+
+                {tripType === "round-trip" && (
                     <div className="w-full">
                         <label className="block text-[10px] sm:text-xs font-medium text-foreground/70 mb-2 uppercase tracking-wide">
-                            Departure Date
+                            Return Date
                         </label>
                         <div className="relative">
                             <Calendar className="absolute left-3 top-3.5 text-foreground/40" size={18} />
                             <DatePicker
-                                selected={departureDate}
-                                onChange={(date) => setDepartureDate(date)}
+                                selected={returnDate}
+                                onChange={(date) => setReturnDate(date)}
                                 placeholderText="Select"
                                 className="w-full pl-10 pr-9 py-2.5 sm:py-3 border border-gray-400 rounded-md font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-xs sm:text-sm"
                             />
                         </div>
                     </div>
-
-                    {tripType === "round-trip" && (
-                        <div className="w-full">
-                            <label className="block text-[10px] sm:text-xs font-medium text-foreground/70 mb-2 uppercase tracking-wide">
-                                Return Date
-                            </label>
-                            <div className="relative">
-                                <Calendar className="absolute left-3 top-3.5 text-foreground/40" size={18} />
-                                <DatePicker
-                                    selected={returnDate}
-                                    onChange={(date) => setReturnDate(date)}
-                                    placeholderText="Select"
-                                    className="w-full pl-10 pr-9 py-2.5 sm:py-3 border border-gray-400 rounded-md font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 text-xs sm:text-sm"
-                                />
-                            </div>
-                        </div>
-                    )}
+                )}
                 <div>
                     <TravelerCabinSelect
                         state={travelerState}
                         onChange={setTravelerState}
                     />
                 </div>
-            
-                </div>
-                
+
+            </div>
+
 
 
             <div className="flex justify-end mt-4">
