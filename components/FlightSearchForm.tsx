@@ -158,8 +158,11 @@ export default function FlightSearchForm({ mode }: { mode: Mode }) {
             </div>
 
             {/* Mobile    */}
-            <div className="md:hidden  w-full bg-gray-50 shadow-[0_-2px_8px_rgba(0,0,0,0.08)] border-t z-30">
-                <div className="flex justify-between items-center px-4 py-3">
+            <div className="md:hidden  w-full   z-30">
+                <div className="div md:hidden block " onClick={() => setShowMobilePopup(true)}>
+
+               
+                <div className="flex justify-between items-center px-4 " >
                     <div className="flex flex-col text-sm font-medium">
                         <div className="flex gap-2">
                             <span className="text-lg font-medium">{origin?.iata || "Origin"}</span>
@@ -184,6 +187,7 @@ export default function FlightSearchForm({ mode }: { mode: Mode }) {
                         <Search size={20} />
                     </button>
                 </div>
+                 </div>
             </div>
 
 
@@ -195,7 +199,7 @@ export default function FlightSearchForm({ mode }: { mode: Mode }) {
                         animate={{ y: 0 }}
                         exit={{ y: "-100%" }}
                         transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                        className="fixed top-20 left-0 w-full h-auto bg-white z-50 overflow-y-auto px-3 pb-3 "
+                        className="fixed top-17 left-0 pt-3 w-full h-auto bg-white z-50 overflow-y-auto px-3 pb-3 "
                     >
                         <div className="flex justify-between relative items-center ">
                             <button

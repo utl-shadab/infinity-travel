@@ -254,7 +254,7 @@ export default function TravelTabs() {
             <motion.div
                 key={activeTab}
                 transition={{ duration: 0.4 }}
-                className={`transition-all ${activeTab === "Packages" ? "p-0 bg-transparent shadow-none" : "bg-white rounded-xl shadow-2xl p-4 md:p-8"
+                className={`transition-all ${activeTab === "Packages" ? "p-0 bg-transparent shadow-none" : "bg-white rounded-xl shadow-2xl p-3 md:p-8"
                     }`}
             >
                 {activeTab === "Flights" && (
