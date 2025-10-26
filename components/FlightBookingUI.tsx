@@ -167,7 +167,7 @@ export default function FlightBookingUI() {
   return (
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[30%_70%] gap-3">
       {/* Sidebar Filters */}
-      <aside className="space-y-3">
+      <aside className="space-y-3 hidden md:block">
         <Card className="bg-white">
           <FiltersPanel />
           <FlightTimeSelector />
@@ -178,7 +178,7 @@ export default function FlightBookingUI() {
       </aside>
 
       {/* Main Section */}
-      <main className="space-y-6">
+      <main className="space-y-6 ">
        <AirlinePriceSlide/>
        <FareOptionsBar/>
        <FlightCard flight={sampleFlight} />

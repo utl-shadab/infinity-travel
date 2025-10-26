@@ -15,8 +15,8 @@ export default function FlightListingPage() {
             <div className="max-w-7xl mx-auto px-3 w-full  sm:px-6 lg:px-8 py-6">
                 <FlightSearchForm mode="modify" />
             </div>
-            <section className="mt-6  bg-gray-100">
-                 <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-6">
+            <section className=" mt-0 md:mt-6  bg-gray-100">
+                 <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 md:py-6">
                 <FlightBookingUI/>
                  </div>
             </section>

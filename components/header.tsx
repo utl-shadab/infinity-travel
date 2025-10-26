@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown, Home, Plane, Building2, Ship, Package, FileText, Info, PhoneCall, LogInIcon } from "lucide-react"
+import { ChevronDown,  Plane, Building2, Ship, Package, FileText, Info, PhoneCall, LogInIcon, List } from "lucide-react"
 import Image from "next/image"
 
 const NAVIGATION_ITEMS = [
-  { label: "Home", href: "/", icon: <Home size={18} /> },
+  { label: "Listing", href: "/flight-listing", icon: <List size={18} /> },
   { label: "Flight", href: "/flights", hasSubmenu: true, icon: <Plane size={18} /> },
   { label: "Hotel", href: "/hotels", icon: <Building2 size={18} /> },
   { label: "Cruise", href: "/cruises", icon: <Ship size={18} /> },
@@ -239,7 +239,7 @@ export function Header() {
               ))}
 
               <div className="border-t border-primary-foreground/20 pt-4 mt-4 space-y-2">
-                <button className="w-full px-4 py-2 text-sm font-medium hover:bg-primary-foreground/10 rounded-md transition-colors">
+                <button className="w-80 text-center justify-center md:pr-0 pr-10 flex bg-secondary md:bg-transparent items-center px-4 py-2 text-sm font-medium hover:bg-primary-foreground/10 rounded-md transition-colors">
                   <LogInIcon className="mr-2" />
                   Login
                 </button>
